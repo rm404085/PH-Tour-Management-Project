@@ -4,7 +4,7 @@ import express, {  Request, Response } from "express"
 
 import cors from "cors";
 import { router } from "./app/router";
-import { globalError } from "./app/globalError/globalError";
+import { globalError, globalErrorHandler } from "./app/globalError/globalError";
 import httpStatus from 'http-status-codes';
 import notFound from "./app/notFound/notFound";
 import cookieParser from "cookie-parser";
@@ -34,7 +34,8 @@ app.get("/", (req : Request, res : Response)=>{
 })
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-app.use(globalError)
+
+app.use(globalErrorHandler)
 
 app.use(notFound)
 
