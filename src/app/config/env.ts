@@ -18,7 +18,22 @@ interface EnvConfig {
    GOOGLE_CLIENT_ID:string,
    GOOGLE_CALLBACK_URL:string,
    EXPRESS_SESSION_SECRET:string,
-   FRONTEND_URL:string
+   FRONTEND_URL:string,
+
+   SSL: {
+    SSL_STORE_ID: string,
+    SSL_STORE_PASS:string,
+    SSL_PAMANENT_API:string,
+    SSL_VALIDATION_API:string,
+    SSL_SUCCESS_BACKEND_URL:string,
+    SSL_FAIL_BACKEND_URL:string,
+    SSL_CANCEL_BACKEND_URL:string,
+    SSL_SUCCESS_FRONTEND_URL:string,
+    SSL_FAIL_FRONTEND_URL:string,
+    SSL_CANCEL_FRONTEND_URL:string,
+   },
+
+
 }
 
 const loadEnvVariables = ():EnvConfig =>{
@@ -36,7 +51,17 @@ const loadEnvVariables = ():EnvConfig =>{
         'GOOGLE_CLIENT_ID',
         'GOOGLE_CALLBACK_URL',
         'EXPRESS_SESSION_SECRET',
-        'FRONTEND_URL'
+        'FRONTEND_URL',
+        'SSL_STORE_ID',
+        'SSL_STORE_PASS',
+        'SSL_PAMANENT_API',
+        'SSL_VALIDATION_API',
+        'SSL_SUCCESS_BACKEND_URL',
+        'SSL_FAIL_BACKEND_URL',
+        'SSL_CANCEL_BACKEND_URL',
+        'SSL_SUCCESS_FRONTEND_URL',
+        'SSL_FAIL_BACKEND_URL',
+        'SSL_CANCEL_BACKEND_URL',
 
     ];
 
@@ -64,6 +89,20 @@ const loadEnvVariables = ():EnvConfig =>{
     GOOGLE_CALLBACK_URL:process.env.GOOGLE_CALLBACK_URL as string,
     EXPRESS_SESSION_SECRET:process.env.EXPRESS_SESSION_SECRET as string,
     FRONTEND_URL:process.env.FRONTEND_URL as string,
+   SSL : {
+     SSL_STORE_ID:process.env.SSL_STORE_ID as string,
+    SSL_STORE_PASS:process.env.SSL_STORE_PASS as string,
+    SSL_PAMANENT_API:process.env.SSL_PAMANENT_API as string,
+    SSL_VALIDATION_API:process.env.SSL_VALIDATION_API as string,
+    SSL_SUCCESS_BACKEND_URL:process.env.SSL_SUCCESS_BACKEND_URL as string,
+    SSL_FAIL_BACKEND_URL:process.env.SSL_FAIL_BACKEND_URL as string,
+    SSL_CANCEL_BACKEND_URL:process.env.SSL_CANCEL_BACKEND_URL as string,
+    SSL_SUCCESS_FRONTEND_URL:process.env.SSL_SUCCESS_FRONTEND_URL as string,
+    SSL_FAIL_FRONTEND_URL:process.env.SSL_FAIL_FRONTEND_URL as string,
+    SSL_CANCEL_FRONTEND_URL:process.env.SSL_CANCEL_FRONTEND_URL as string,
+   
+   },
+
    }
 
 }
