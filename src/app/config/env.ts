@@ -32,6 +32,11 @@ interface EnvConfig {
     SSL_FAIL_FRONTEND_URL:string,
     SSL_CANCEL_FRONTEND_URL:string,
    },
+    CLOUDINARY:{
+    CLOUDINARY_CLOUD_NAME:string,
+    CLOUDINARY_API_KEY:string,
+    CLOUDINARY_API_SECRET:string,
+    },
 
 
 }
@@ -62,6 +67,9 @@ const loadEnvVariables = ():EnvConfig =>{
         'SSL_SUCCESS_FRONTEND_URL',
         'SSL_FAIL_BACKEND_URL',
         'SSL_CANCEL_BACKEND_URL',
+        'CLOUDINARY_CLOUD_NAME',
+        'CLOUDINARY_API_KEY',
+        'CLOUDINARY_API_SECRET',
 
     ];
 
@@ -90,7 +98,7 @@ const loadEnvVariables = ():EnvConfig =>{
     EXPRESS_SESSION_SECRET:process.env.EXPRESS_SESSION_SECRET as string,
     FRONTEND_URL:process.env.FRONTEND_URL as string,
    SSL : {
-     SSL_STORE_ID:process.env.SSL_STORE_ID as string,
+    SSL_STORE_ID:process.env.SSL_STORE_ID as string,
     SSL_STORE_PASS:process.env.SSL_STORE_PASS as string,
     SSL_PAMANENT_API:process.env.SSL_PAMANENT_API as string,
     SSL_VALIDATION_API:process.env.SSL_VALIDATION_API as string,
@@ -102,6 +110,11 @@ const loadEnvVariables = ():EnvConfig =>{
     SSL_CANCEL_FRONTEND_URL:process.env.SSL_CANCEL_FRONTEND_URL as string,
    
    },
+    CLOUDINARY: {
+    CLOUDINARY_CLOUD_NAME:process.env.CLOUDINARY_CLOUD_NAME as string,
+    CLOUDINARY_API_KEY:process.env.CLOUDINARY_API_KEY as string,
+    CLOUDINARY_API_SECRET:process.env.CLOUDINARY_API_SECRET as string,
+    },
 
    }
 

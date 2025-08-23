@@ -10,7 +10,7 @@ import bcryptjs  from 'bcryptjs';
 import { generateToken, verifyToken } from "../../utils/jwt";
 import { envVars } from "../../config/env";
 import { createNewAccessTokenAndRefreshToken, createUserToken } from "../../utils/refreshaccess";
-const credentialsLogin = async (payload: partial<IUser>) =>{
+const credentialsLogin = async (payload: Partial<IUser>) =>{
             
     const {email,password} = payload;
 

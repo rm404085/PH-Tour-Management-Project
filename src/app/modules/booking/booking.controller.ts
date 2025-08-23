@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { catchAsync } from "../../utils/catcjAsync";
 import { BookingService } from "./booking.services";
 import { sendResponse } from "../../utils/sendResponse";
+import { JwtPayload } from "jsonwebtoken";
 
 const createBooking = catchAsync(async (req: Request, res: Response) => {
     const decodeToken = req.user as JwtPayload
