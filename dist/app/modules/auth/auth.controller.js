@@ -33,7 +33,6 @@ const setCookies_1 = require("../../utils/setCookies");
 const refreshaccess_1 = require("../../utils/refreshaccess");
 const env_1 = require("../../config/env");
 const passport_1 = __importDefault(require("passport"));
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const credentialsLogin = (0, catcjAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     // const user = await userServises.createUserService(req.body);
     //   const loginInfo = await AuthService.credentialsLogin(req.body);
@@ -74,7 +73,10 @@ const getNewAccessToken = (0, catcjAsync_1.catchAsync)((req, res, next) => __awa
         throw new appError_1.default(http_status_codes_1.default.BAD_REQUEST, "refresh token error from cookeis");
     }
     const tokenInfo = yield auth_services_1.AuthService.getNewAccessToken(refreshToken);
-    (0, setCookies_1.setAuthCookies)(res, tokenInfo);
+    const tokens = {
+        accessToken: tokenInfo.accessToken.accessToken, // access the string inside the object
+    };
+    (0, setCookies_1.setAuthCookies)(res, tokens);
     (0, sendResponse_1.sendResponse)(res, {
         success: true,
         statusCode: http_status_codes_1.default.OK,
@@ -121,7 +123,7 @@ const googleCallbackController = (0, catcjAsync_1.catchAsync)((req, res, next) =
     if (!user) {
         throw new appError_1.default(http_status_codes_1.default.BAD_REQUEST, "user not found ");
     }
-    const tokenInfo = (0, refreshaccess_1.createUserToken)(user);
+    const tokenInfo = yield (0, refreshaccess_1.createUserToken)(user);
     (0, setCookies_1.setAuthCookies)(res, tokenInfo);
     //   sendResponse(res, {
     //         success: true,

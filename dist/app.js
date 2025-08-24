@@ -1,5 +1,4 @@
 "use strict";
-/* eslint-disable @typescript-eslint/no-explicit-any */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -31,7 +30,6 @@ app.get("/", (req, res) => {
         message: "Welcome to server"
     });
 });
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use(globalError_1.globalErrorHandler);
 app.use(notFound_1.default);
 exports.default = app;

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import AppError from "../../errorHelpUs/appError";
-import { IsActive, IUser } from "../user/user.interfaces"
-import jwt, { JwtPayload } from "jsonwebtoken"
+import {  IUser } from "../user/user.interfaces"
+import  { JwtPayload } from "jsonwebtoken"
 
 import httpstatus  from 'http-status-codes';
 import { User } from "../user/user.model";
@@ -50,7 +50,8 @@ const getNewAccessToken = async (refreshToken: string) =>{
             
 const newAccessToke = await createNewAccessTokenAndRefreshToken(refreshToken);
     return {
-        accessToken: newAccessToke,
+        accessToken: newAccessToke
+       
         
     }
 }
@@ -59,7 +60,7 @@ const resetPassword = async (oldPassword:string, newPassword: string, decodedTok
         
 
     const user = await User.findById(decodedToken.userId)
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+     
     const isoldPasswordMatch = await bcryptjs.compare(oldPassword, user!.password as string)
 
     console.log("Old Password:", oldPassword);

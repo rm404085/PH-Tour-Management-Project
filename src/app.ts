@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 
 import express, {  Request, Response } from "express"
 
 import cors from "cors";
 import { router } from "./app/router";
-import { globalError, globalErrorHandler } from "./app/globalError/globalError";
-import httpStatus from 'http-status-codes';
+import {  globalErrorHandler } from "./app/globalError/globalError";
+
 import notFound from "./app/notFound/notFound";
 import cookieParser from "cookie-parser";
 import passport from "passport";
@@ -34,7 +34,7 @@ app.get("/", (req : Request, res : Response)=>{
     })
 })
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 
 app.use(globalErrorHandler)
 

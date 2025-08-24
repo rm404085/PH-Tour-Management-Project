@@ -19,7 +19,7 @@ const initPayment = async (bookingId: string) => {
 
     const booking = await Booking.findById(payment.booking)
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     
     const userAddress = (booking?.user as any).address
     const userEmail = (booking?.user as any).email
     const userPhoneNumber = (booking?.user as any).phone

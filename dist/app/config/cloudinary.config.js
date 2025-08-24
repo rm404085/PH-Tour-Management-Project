@@ -1,8 +1,7 @@
 "use strict";
-/* eslint-disable @typescript-eslint/no-explicit-any */
+// Frontedn -> Form Data with Image File -> Multer -> Form data -> Req (Body + File)
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cloudinaryUpload = void 0;
-// Frontedn -> Form Data with Image File -> Multer -> Form data -> Req (Body + File)
 const cloudinary_1 = require("cloudinary");
 const env_1 = require("./env");
 // Amader folder -> image -> form data -> File -> Multer -> Amader project / pc te Nijer ekta folder(temporary) -> Req.file

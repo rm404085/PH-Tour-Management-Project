@@ -6,12 +6,13 @@ import { sendResponse } from "../../utils/sendResponse"
 import httpStatus  from 'http-status-codes';
 import { AuthService } from "./auth.services";
 import AppError from "../../errorHelpUs/appError";
-import { setAuthCookies } from "../../utils/setCookies";
+import { AuthTokens, setAuthCookies } from "../../utils/setCookies";
 import { createUserToken } from "../../utils/refreshaccess";
 import { envVars } from "../../config/env";
 import { JwtPayload } from "jsonwebtoken";
 import passport from "passport";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { any } from "zod";
+ 
 const credentialsLogin = catchAsync(async(req : Request, res : Response, next:NextFunction) =>{
     // const user = await userServises.createUserService(req.body);
 //   const loginInfo = await AuthService.credentialsLogin(req.body);
@@ -68,8 +69,12 @@ const getNewAccessToken = catchAsync(async(req : Request, res : Response, next:N
         throw new AppError(httpStatus.BAD_REQUEST, "refresh token error from cookeis")
     }
   const tokenInfo = await AuthService.getNewAccessToken(refreshToken as string);
-    
-  setAuthCookies(res, tokenInfo);
+    const tokens:AuthTokens = {
+  accessToken: tokenInfo.accessToken.accessToken, // access the string inside the object
+  
+};
+
+setAuthCookies(res, tokens);
 
   sendResponse(res, {
         success: true,
@@ -133,7 +138,7 @@ const googleCallbackController = catchAsync(async(req : Request, res : Response,
         throw new AppError(httpStatus.BAD_REQUEST, "user not found ")
       }
 
-      const tokenInfo = createUserToken(user)
+      const tokenInfo =await createUserToken(user)
 
       setAuthCookies(res, tokenInfo)
   

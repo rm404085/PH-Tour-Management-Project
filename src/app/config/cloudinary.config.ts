@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 
 // Frontedn -> Form Data with Image File -> Multer -> Form data -> Req (Body + File)
 

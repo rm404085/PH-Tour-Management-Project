@@ -5,7 +5,7 @@ import { generateToken, verifyToken } from "./jwt";
 import { User } from "../modules/user/user.model";
 import AppError from "../errorHelpUs/appError";
 import httpStatus from "http-status-codes"
-import { httpStatus } from 'http-status-codes';
+
 
 export const createUserToken = (user: Partial<IUser>) => {
 

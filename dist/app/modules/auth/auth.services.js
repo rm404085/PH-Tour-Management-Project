@@ -60,12 +60,11 @@ const credentialsLogin = (payload) => __awaiter(void 0, void 0, void 0, function
 const getNewAccessToken = (refreshToken) => __awaiter(void 0, void 0, void 0, function* () {
     const newAccessToke = yield (0, refreshaccess_1.createNewAccessTokenAndRefreshToken)(refreshToken);
     return {
-        accessToken: newAccessToke,
+        accessToken: newAccessToke
     };
 });
 const resetPassword = (oldPassword, newPassword, decodedToken) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield user_model_1.User.findById(decodedToken.userId);
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const isoldPasswordMatch = yield bcryptjs_1.default.compare(oldPassword, user.password);
     console.log("Old Password:", oldPassword);
     console.log("Hashed Password:", user.password);

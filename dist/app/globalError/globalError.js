@@ -10,7 +10,6 @@ const handleDuplicateError_1 = require("../helpers/handleDuplicateError");
 const handleCastError_1 = require("../helpers/handleCastError");
 const handlerZodError_1 = require("../helpers/handlerZodError");
 const handlerValidationError_1 = require("../helpers/handlerValidationError");
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const globalErrorHandler = (err, req, res, next) => {
     if (env_1.envVars.NODE_ENV === "development") {
         console.log(err);
