@@ -14,39 +14,46 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const app_1 = __importDefault(require("./app"));
+const env_1 = require("./app/config/env");
+const seedSuperAdmin_1 = require("./app/utils/seedSuperAdmin");
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 let server;
 const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield mongoose_1.default.connect("mongodb+srv://noteapp:noteapp@cluster0.xek05.mongodb.net/tour-management-backend?retryWrites=true&w=majority&appName=Cluster0");
+        console.log(env_1.envVars.NODE_ENV);
+        yield mongoose_1.default.connect(env_1.envVars.DB_URL);
         console.log("connect to DB!!");
-        server = app_1.default.listen(5000, () => {
-            console.log("server is runong to port 5000");
+        server = app_1.default.listen(env_1.envVars.PORT, () => {
+            console.log(`server is running to port ${env_1.envVars.PORT}`);
         });
     }
     catch (error) {
         console.log(error);
     }
 });
-startServer();
-process.on("unhandledRejection", () => {
-    console.log("unhandle rejection server ...suting --down");
-    if (server) {
-        server.close(() => {
-            process.exit(1);
-        });
-    }
-    process.exit(1);
-});
-process.on("uncaughtException", () => {
-    console.log("uncaughtException rejection server ...suting --down");
-    if (server) {
-        server.close(() => {
-            process.exit(1);
-        });
-    }
-    process.exit(1);
-});
-throw new Error("I forgot exception error");
+(() => __awaiter(void 0, void 0, void 0, function* () {
+    yield startServer();
+    yield (0, seedSuperAdmin_1.seedSuperAdmin)();
+}))();
+// process.on("unhandledRejection", ()=>{
+//     console.log("unhandle rejection server ...suting --down");
+//     if(server){
+//         server.close(()=>{
+//             process.exit(1)
+//         })
+//     }
+//     process.exit(1)
+// })
+// process.on("uncaughtException", ()=>{
+//     console.log("uncaughtException rejection server ...suting --down");
+//     if(server){
+//         server.close(()=>{
+//             process.exit(1)
+//         })
+//     }
+//     process.exit(1)
+// })
+// throw new Error("I forgot exception error")
 // Promise.reject(new Error("I forgot to promise"));
 /**
  * unhandled rejection error

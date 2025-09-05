@@ -81,7 +81,7 @@ passport.use(
                 return done(null, user)
 
             } catch (error) {
-                console.log("Google arrategy error", error);
+                
 
                 return done(error)
             }
@@ -96,16 +96,18 @@ passport.use(
 //Google -> req -> google -> successful : Jwt Token : Role , email -> DB - Store -> token - api access
 
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 passport.serializeUser((user: any, done: (err: any, id?:unknown) =>void)=>{
     done(null, user._id)
 })
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 passport.deserializeUser(async (id: string, done: any) => {
     try {
         const user = await User.findById(id);
         done(null, user)
     } catch (error) {
-        console.log(error);
+        
         done(error)
     }
 })

@@ -1,9 +1,9 @@
 import AppError from "../../errorHelpUs/appError";
-import { IAuthProvider, IsActive, IUser, Role } from "./user.interfaces";
+import { IAuthProvider,  IUser, Role } from "./user.interfaces";
 import { User } from "./user.model";
 import httpstatus from "http-status-codes"
 import bycriptjs from "bcryptjs"
-import { number } from "zod";
+
 import { envVars } from "../../config/env";
 import { JwtPayload } from "jsonwebtoken";
 const createUserService = async (payload: Partial<IUser>) =>{

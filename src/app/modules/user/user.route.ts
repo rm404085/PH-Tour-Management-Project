@@ -1,13 +1,11 @@
-import { NextFunction, Request, Response, Router } from "express";
+import {  Router } from "express";
 import { UserControllers } from "./user.controller";
 
 import { createUserZodSchema, updateUserZodSchema } from "./user.validation";
 import { validationRequest } from "../../globalError/validationRequest";
-import jwt, { JwtPayload } from "jsonwebtoken";
-import AppError from "../../errorHelpUs/appError";
+
 import { Role } from "./user.interfaces";
-import { envVars } from "../../config/env";
-import { verifyToken } from "../../utils/jwt";
+
 import { checkAuth } from "../../middleware/checkauth";
 
 const router = Router();

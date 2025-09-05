@@ -1,4 +1,4 @@
-import { model, Model, Schema } from "mongoose"
+import { model, Schema } from "mongoose"
 import { BOOKING_STATUS, IBooking } from "./booking.interface"
 
 

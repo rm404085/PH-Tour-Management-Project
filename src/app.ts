@@ -4,8 +4,8 @@ import express, {  Request, Response } from "express"
 
 import cors from "cors";
 import { router } from "./app/router";
-import { globalError, globalErrorHandler } from "./app/globalError/globalError";
-import httpStatus from 'http-status-codes';
+import { globalErrorHandler } from "./app/globalError/globalError";
+
 import notFound from "./app/notFound/notFound";
 import cookieParser from "cookie-parser";
 import passport from "passport";

@@ -6,6 +6,7 @@ import app from "./app";
 import { envVars } from "./app/config/env";
 import { seedSuperAdmin } from "./app/utils/seedSuperAdmin";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 let server: Server;
 
 

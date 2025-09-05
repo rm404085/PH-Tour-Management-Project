@@ -1,16 +1,17 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import AppError from "../../errorHelpUs/appError";
-import { IsActive, IUser } from "../user/user.interfaces"
-import jwt, { JwtPayload } from "jsonwebtoken"
+import { IUser } from "../user/user.interfaces"
+import  { JwtPayload } from "jsonwebtoken"
 
 import httpstatus  from 'http-status-codes';
 import { User } from "../user/user.model";
 import bcryptjs  from 'bcryptjs';
-import { generateToken, verifyToken } from "../../utils/jwt";
+
 import { envVars } from "../../config/env";
 import { createNewAccessTokenAndRefreshToken, createUserToken } from "../../utils/refreshaccess";
-const credentialsLogin = async (payload: partial<IUser>) =>{
+import { AuthTokens } from "../../utils/setCookies";
+const credentialsLogin = async (payload: Partial<IUser>) =>{
             
     const {email,password} = payload;
 
@@ -46,14 +47,16 @@ const credentialsLogin = async (payload: partial<IUser>) =>{
     }
 }
 
-const getNewAccessToken = async (refreshToken: string) =>{
-            
-const newAccessToke = await createNewAccessTokenAndRefreshToken(refreshToken);
-    return {
-        accessToken: newAccessToke,
-        
-    }
-}
+const getNewAccessToken = async (refreshToken: string): Promise<AuthTokens> => {
+  const tokens = await createNewAccessTokenAndRefreshToken(refreshToken);
+
+  return {
+    accessToken: tokens.accessToken,
+    refreshToken: tokens.refreshToken,
+  };
+};
+
+
 
 const resetPassword = async (oldPassword:string, newPassword: string, decodedToken: JwtPayload) =>{
         

@@ -3,12 +3,11 @@ import { NextFunction, Request, Response } from "express";
 
 import httpStatus from "http-status-codes";
 import { userServises } from "./user.services";
-import { Error } from "mongoose";
+
 
 import { catchAsync } from "../../utils/catcjAsync";
 import { sendResponse } from "../../utils/sendResponse";
-import { verifyToken } from "../../utils/jwt";
-import { envVars } from "../../config/env";
+
 import { JwtPayload } from "jsonwebtoken";
 
 
